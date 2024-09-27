@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FWI Prediction</title>
+    <style>
+        body {
+            background-color: #333; /* Dark background */
+            color: white; /* White text */
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px; /* Increase space between fields */
+        }
+        label {
+            font-size: 1.2rem; /* Increase label font size */
+        }
+        input {
+            padding: 10px;
+            font-size: 1.1rem; /* Increase input text size */
+            width: 100%; /* Make inputs full width */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #0056b3; /* Darker blue button */
+            color: white;
+            padding: 10px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 40px; /* Increase space below the header */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FWI Prediction</h1>
+        <!-- Form should post data to the predict_datapoint route -->
+        <form action="{{ url_for('predict_datapoint') }}" method="POST">
+            <div class="form-group">
+                <label for="Temperature">Temperature</label>
+                <input type="text" id="Temperature" name="Temperature" placeholder="Enter Temperature" required>
+            </div>
+            <div class="form-group">
+                <label for="RH">Relative Humidity (RH)</label>
+                <input type="text" id="RH" name="RH" placeholder="Enter RH" required>
+            </div>
+            <div class="form-group">
+                <label for="Ws">Wind Speed (Ws)</label>
+                <input type="text" id="Ws" name="Ws" placeholder="Enter Wind Speed" required>
+            </div>
+            <div class="form-group">
+                <label for="Rain">Rain</label>
+                <input type="text" id="Rain" name="Rain" placeholder="Enter Rain Amount" required>
+            </div>
+            <div class="form-group">
+                <label for="FFMC">FFMC (Fine Fuel Moisture Code)</label>
+                <input type="text" id="FFMC" name="FFMC" placeholder="Enter FFMC" required>
+            </div>
+            <div class="form-group">
+                <label for="DMC">DMC (Duff Moisture Code)</label>
+                <input type="text" id="DMC" name="DMC" placeholder="Enter DMC" required>
+            </div>
+            <div class="form-group">
+                <label for="ISI">ISI (Initial Spread Index)</label>
+                <input type="text" id="ISI" name="ISI" placeholder="Enter ISI" required>
+            </div>
+            <div class="form-group">
+                <label for="Classes">Classes</label>
+                <input type="text" id="Classes" name="Classes" placeholder="Enter Classes" required>
+            </div>
+            <div class="form-group">
+                <label for="Region">Region</label>
+                <input type="text" id="Region" name="Region" placeholder="Enter Region" required>
+            </div>
+            <div class="form-group">
+                <label for="BUI">BUI (BuildUp Index)</label>
+                <input type="text" id="BUI" name="BUI" placeholder="Enter BUI" required>
+            </div>
+            <div class="form-group">
+                <label for="DC">DC (Drought Code)</label> <!-- Consistent styling applied -->
+                <input type="text" id="DC" name="DC" placeholder="Enter DC" required>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+
+        <h2>THE FWI prediction is: <span>{{ result }}</span></h2>
+    </div>
+</body>
+</html>
+
